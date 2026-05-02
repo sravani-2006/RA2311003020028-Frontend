@@ -3,6 +3,7 @@
 ## Stage 1
 
 ### Problem
+
 We need to fetch notifications from an API and identify the top 10 most important unread notifications.
 
 Unread is assumed as all notifications.
@@ -18,6 +19,7 @@ Each notification is assigned a priority weight:
 - Event = 1
 
 Sorting rules:
+
 1. Higher priority first
 2. If same priority → newer timestamp first
 
@@ -26,6 +28,7 @@ Sorting rules:
 ### Top 10 Computation
 
 Steps:
+
 1. Fetch all notifications
 2. Assign priority using mapping
 3. Sort:
@@ -51,20 +54,23 @@ Instead of sorting all notifications:
 Use a **Min Heap of size 10**
 
 Algorithm:
+
 1. Iterate notifications
 2. Push into heap (based on priority + timestamp)
 3. If heap size > 10 → remove smallest
 4. Final heap = top 10
 
 Time Complexity:
+
 - O(n log k), where k = 10
-→ effectively O(n)
+  → effectively O(n)
 
 ---
 
 ### Why Min Heap?
 
 Efficient for:
+
 - Real-time systems
 - Continuous data streams
 - Memory-constrained environments
@@ -74,6 +80,7 @@ Efficient for:
 ### Scalability
 
 For large-scale systems:
+
 - Use streaming processors (Kafka consumers)
 - Maintain distributed priority queues
 - Cache top results (Redis)
